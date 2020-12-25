@@ -1,4 +1,4 @@
-const countainer = document.createElement('.countainer');
+const countainer = document.createElement('div');
 document.querySelector('body').appendChild(countainer);
 
 function getUsers(callback) {
@@ -18,17 +18,26 @@ function getUsers(callback) {
 
 function renderUsers(responce) {
     const fragment = document.createDocumentFragment();
-    responce.forEach(user => {
+    responce.forEach(users => {
         const card = document.createElement("div");
         card.classList.add("card");
         const cardBody = document.createElement("div");
         cardBody.classList.add("card-body");
         const title = document.createElement("h5");
         title.classList.add("card-title");
-        title.textContent = user.name;
+        title.textContent = users.name;
         const article = document.createElement("p");
         article.classList.add("card-text");
-        article.textContent = user.body;
+
+        title.addEventListener('mouseenter', (e) => {
+            if (e.target) {
+                article.textContent = JSON.stringify(users);
+            } else {article.textContent = ''}
+        });
+        title.addEventListener('mouseleave', (e) => {
+            if (e.target) {
+                article.textContent = '';
+        }});
         cardBody.appendChild(title);
         cardBody.appendChild(article);
         card.appendChild(cardBody);
