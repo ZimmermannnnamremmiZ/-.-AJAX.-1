@@ -28,7 +28,6 @@ function renderUsers(responce) {
         title.textContent = users.name;
         const article = document.createElement("p");
         article.classList.add("card-text");
-
         title.addEventListener('mouseenter', (e) => {
             if (e.target) {
                 article.textContent = JSON.stringify(users);
@@ -47,3 +46,5 @@ function renderUsers(responce) {
 }
 
 getUsers(renderUsers);
+
+// https://www.encodedna.com/javascript/populate-json-data-to-html-table-using-javascript.htm
